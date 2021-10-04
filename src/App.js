@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import TextSearch from 'components/text-search'
+import TypeFilter from 'components/type-filter'
+import Sorter from 'components/sorter'
+import PokemonList from 'components/pokemon-list';
 
 function App() {
+
+  const [pokemons, setPokemons] = useState({})
+
+  const updatePokemons = (pokemons) => {
+    setPokemons(pokemons)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Pokedex
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <body>
+        <TextSearch pokemonList={pokemons} />
+        <TypeFilter />
+        <Sorter />
+        <PokemonList updatePokemons={updatePokemons} />
+      </body>
     </div>
   );
 }
 
 export default App;
+
+
+
+
+
