@@ -4,6 +4,7 @@ import TextSearch from 'components/text-search'
 import TypeFilter from 'components/type-filter'
 import Sorter from 'components/sorter'
 import PokemonList from 'components/pokemon-list'
+import PokemonCard from 'components/card'
 
 function App() {
   const [pokemons, setPokemons] = useState(null)
@@ -68,45 +69,69 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Pokedex</p>
-      </header>
-      <body>
-        <Box>
-          <Box display="flex" flexDirection="row" justifyContent="space-around">
-            <Box>
-              <Sorter sortSelect={sortSelect} sort={sort} />
-            </Box>
-            <Box maxWidth={'40px'}>
-              <TextSearch pokemonList={pokemons} nameFilter={nameFilter} />
-            </Box>
-          </Box>
+    <Box width={'100%'} display="flex" justifyContent="center" m={5}>
+      <Box
+        display="flex"
+        flexDirection="column"
+        width={1280}
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Box display="flex" flexDirection="row" justifyContent="space-around">
           <Box>
-            <TypeFilter typeFilter={typeFilter} />
+            <Sorter sortSelect={sortSelect} sort={sort} />
           </Box>
-          <Box>
-            <PokemonList updatePokemons={updatePokemons} />
-          </Box>
-          <Box>
-            {pokemons &&
-              pokemons
-                .filter(pokeFilter)
-                .sort(pokeSort)
-                .map(({ name, number }) => {
-                  return (
-                    <div key={number}>
-                      <p>
-                        {name}: {number}
-                      </p>
-                    </div>
-                  )
-                })}
+          <Box maxWidth={'40px'}>
+            <TextSearch pokemonList={pokemons} nameFilter={nameFilter} />
           </Box>
         </Box>
-      </body>
-    </div>
+        <Box>
+          <TypeFilter typeFilter={typeFilter} />
+        </Box>
+        <Box>
+          <PokemonList updatePokemons={updatePokemons} />
+        </Box>
+
+        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
+          {pokemons &&
+            pokemons
+              .filter(pokeFilter)
+              .sort(pokeSort)
+              .map((pokemon) => (
+                <Box
+                  m={1}
+                  p={1}
+                  borderRadius={1}
+                  textAlign={'center'}
+                  fontSize={19}
+                  fontWeight="700"
+                >
+                  <PokemonCard pokemon={pokemon} />
+                </Box>
+              ))}
+        </Box>
+      </Box>
+    </Box>
   )
 }
 
 export default App
+
+function Item(props) {
+  const { sx, ...other } = props
+  return (
+    <Box
+      sx={{
+        color: 'white',
+        p: 1,
+        m: 1,
+        borderRadius: 1,
+        textAlign: 'center',
+        fontSize: 19,
+        fontWeight: '700',
+        ...sx
+      }}
+      {...other}
+    />
+  )
+}
