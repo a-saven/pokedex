@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 import TextSearch from 'components/text-search'
 import TypeFilter from 'components/type-filter'
 import Sorter from 'components/sorter'
@@ -77,11 +78,16 @@ function App() {
         alignItems="center"
         justifyContent="center"
       >
-        <Box display="flex" flexDirection="row" justifyContent="space-around">
-          <Box>
+        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
+          <Box alignItems="center" justifyContent="center">
             <Sorter sortSelect={sortSelect} sort={sort} />
           </Box>
-          <Box maxWidth={'40px'}>
+          <Box fontWeight="700" alignItems="center" justifyContent="center">
+            <Typography variant="h6" textAlign="center">
+              POKEDEX
+            </Typography>
+          </Box>
+          <Box maxWidth={'400px'}>
             <TextSearch pokemonList={pokemons} nameFilter={nameFilter} />
           </Box>
         </Box>

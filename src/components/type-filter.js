@@ -36,7 +36,7 @@ export default function TypeFilter({ typeFilter }) {
   }
 
   return (
-    <Box display="flex" p={5}>
+    <Box p={5} sx={{ display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)' }}>
       {Object.keys(pokeTypes).map((type) => (
         <Box>
           <FormControlLabel

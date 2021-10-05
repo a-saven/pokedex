@@ -21,7 +21,7 @@ export default function SortMenu({ sortSelect, sort }) {
   }
 
   return (
-    <div>
+    <Box pl={10}>
       <Button
         id="demo-customized-button"
         aria-controls="demo-customized-menu"
@@ -31,8 +31,10 @@ export default function SortMenu({ sortSelect, sort }) {
         disableElevation
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
+        size="large"
+        width={300}
       >
-        Sort {sort}
+        Sort by {sort}
       </Button>
       <Menu
         id="demo-customized-menu"
@@ -61,6 +63,6 @@ export default function SortMenu({ sortSelect, sort }) {
           Number
         </MenuItem>
       </Menu>
-    </div>
+    </Box>
   )
 }

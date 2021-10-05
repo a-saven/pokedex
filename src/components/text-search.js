@@ -10,7 +10,7 @@ export default function TextSearch({ pokemonList, nameFilter }) {
     <Autocomplete
       value={value}
       onChange={(event, newValue) => {
-        nameFilter(newValue.name)
+        nameFilter(newValue?.name)
         setValue(newValue)
       }}
       inputValue={inputValue}
@@ -21,10 +21,10 @@ export default function TextSearch({ pokemonList, nameFilter }) {
       disablePortal
       id="combo-box-demo"
       options={pokemonList}
-      getOptionLabel={(option) => option.name}
+      getOptionLabel={(option) => option?.name}
       sx={{ width: 300 }}
       renderInput={(params) => (
-        <TextField {...params} label="Pokemon" width={'300px'} />
+        <TextField {...params} label="Pokemon name" width={'300px'} />
       )}
     />
   )
