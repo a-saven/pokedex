@@ -32,7 +32,7 @@ export default function SortMenu({ sortSelect, sort }) {
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
         size="large"
-        width={300}
+        //width={300}
       >
         Sort by {sort}
       </Button>

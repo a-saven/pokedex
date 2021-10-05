@@ -27,9 +27,23 @@ const ExpandMore = styled((props) => {
 
 export default function PokemonCard({ pokemon }) {
   const [expanded, setExpanded] = useState(false)
-
   const handleExpandClick = () => {
     setExpanded(!expanded)
+  }
+
+  const handleFavorite = (id) => {
+    let savedIdArray = JSON.parse(localStorage['favorite'] || null)
+    if (!savedIdArray) {
+      localStorage.setItem('favorite', JSON.stringify([id]))
+    } else {
+      const savedIndex = savedIdArray.indexOf(id)
+      if (savedIndex === -1) {
+        localStorage.setItem('favorite', JSON.stringify([...savedIdArray, id]))
+      } else {
+        savedIdArray.splice(savedIndex, 1)
+        localStorage.setItem('favorite', JSON.stringify(savedIdArray))
+      }
+    }
   }
 
   return (
@@ -68,7 +82,7 @@ export default function PokemonCard({ pokemon }) {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+          <FavoriteIcon onClick={() => handleFavorite(pokemon?.number)} />
         </IconButton>
         <IconButton aria-label="share">
           <ShareIcon />
