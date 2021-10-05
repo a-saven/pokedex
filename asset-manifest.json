@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/a-saven/pokedex/static/js/main.cb4fb91f.chunk.js",
+    "main.js.map": "/a-saven/pokedex/static/js/main.cb4fb91f.chunk.js.map",
+    "runtime-main.js": "/a-saven/pokedex/static/js/runtime-main.df9aa8e3.js",
+    "runtime-main.js.map": "/a-saven/pokedex/static/js/runtime-main.df9aa8e3.js.map",
+    "static/js/2.74432984.chunk.js": "/a-saven/pokedex/static/js/2.74432984.chunk.js",
+    "static/js/2.74432984.chunk.js.map": "/a-saven/pokedex/static/js/2.74432984.chunk.js.map",
+    "index.html": "/a-saven/pokedex/index.html",
+    "static/js/2.74432984.chunk.js.LICENSE.txt": "/a-saven/pokedex/static/js/2.74432984.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.df9aa8e3.js",
+    "static/js/2.74432984.chunk.js",
+    "static/js/main.cb4fb91f.chunk.js"
+  ]
+}
