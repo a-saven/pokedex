@@ -20,7 +20,7 @@ export default function TextSearch({ pokemonList, nameFilter }) {
       }}
       disablePortal
       id="combo-box-demo"
-      options={pokemonList}
+      options={pokemonList || []}
       getOptionLabel={(option) => option?.name}
       sx={{ width: 300 }}
       renderInput={(params) => (

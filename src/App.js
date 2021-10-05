@@ -1,11 +1,11 @@
 import React from 'react'
-import { HashRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Main from 'pages/main'
 import Favorite from 'pages/favorite'
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/pokedex">
       <Switch>
         <Route path="/favorite">
           <Favorite />

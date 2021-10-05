@@ -81,8 +81,11 @@ export default function PokemonCard({ pokemon }) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon onClick={() => handleFavorite(pokemon?.number)} />
+        <IconButton
+          aria-label="add to favorites"
+          onClick={() => handleFavorite(pokemon?.number)}
+        >
+          <FavoriteIcon />
         </IconButton>
         <IconButton aria-label="share">
           <ShareIcon />

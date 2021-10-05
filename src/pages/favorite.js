@@ -29,6 +29,7 @@ export default function Favorite() {
           {pokemons &&
             pokemons.filter(numberFilter).map((pokemon) => (
               <Box
+                key={pokemon.number}
                 m={1}
                 p={1}
                 borderRadius={1}

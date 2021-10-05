@@ -126,6 +126,7 @@ export default function Main() {
               .sort(pokeSort)
               .map((pokemon) => (
                 <Box
+                  key={pokemon.number}
                   m={1}
                   p={1}
                   borderRadius={1}
