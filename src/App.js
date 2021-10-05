@@ -9,7 +9,7 @@ function App() {
   const [pokemons, setPokemons] = useState(null)
   const [sort, setSort] = useState(null)
   const [filterName, setNameFilter] = useState(null)
-  const [filterType, setTypeFilter] = useState(null)
+  const [filterType, setTypeFilter] = useState([])
 
   const updatePokemons = (pokemons) => {
     setPokemons(pokemons)
@@ -28,7 +28,26 @@ function App() {
   }
 
   const pokeFilter = (pokemon) => {
-    return pokemon
+    if (!filterName && filterType.length === 0) {
+      return pokemon
+    } else if (filterName && filterType.length > 0) {
+      if (
+        pokemon.name.includes(filterName) &&
+        filterType.every((type) => pokemon.types.includes(type))
+      ) {
+        return pokemon
+      }
+    } else if (filterName && filterType.length === 0) {
+      if (pokemon.name.includes(filterName)) {
+        return pokemon
+      }
+    } else if (filterType.length > 0 && !filterName) {
+      if (filterType.every((type) => pokemon.types.includes(type))) {
+        return pokemon
+      }
+    } else {
+      return pokemon
+    }
   }
 
   const pokeSort = (a, b) => {
