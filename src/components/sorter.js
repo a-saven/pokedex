@@ -6,7 +6,7 @@ import Divider from '@mui/material/Divider'
 import Box from '@mui/material/Box'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 
-export default function SortMenu({ sortSelect }) {
+export default function SortMenu({ sortSelect, sort }) {
   const [anchorEl, setAnchorEl] = useState(null)
 
   const open = Boolean(anchorEl)
@@ -32,7 +32,7 @@ export default function SortMenu({ sortSelect }) {
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
       >
-        Sort
+        Sort {sort}
       </Button>
       <Menu
         id="demo-customized-menu"
@@ -43,18 +43,22 @@ export default function SortMenu({ sortSelect }) {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={() => handleClose('az')} disableRipple>
+        <MenuItem onClick={() => handleClose('A-Z')} disableRipple>
           By name A-Z
         </MenuItem>
-        <MenuItem onClick={() => handleClose('za')} disableRipple>
+        <MenuItem onClick={() => handleClose('Z-A')} disableRipple>
           By name Z-A
         </MenuItem>
         <Divider sx={{ my: 0.5 }} />
-        <MenuItem onClick={() => handleClose('-1')} disableRipple>
+        <MenuItem onClick={() => handleClose('Type A-Z')} disableRipple>
           By first type A-Z
         </MenuItem>
-        <MenuItem onClick={() => handleClose('+1')} disableRipple>
+        <MenuItem onClick={() => handleClose('Type Z-A')} disableRipple>
           By first type Z-A
+        </MenuItem>
+        <Divider sx={{ my: 0.5 }} />
+        <MenuItem onClick={() => handleClose('Id')} disableRipple>
+          Number
         </MenuItem>
       </Menu>
     </div>

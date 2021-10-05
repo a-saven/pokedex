@@ -7,7 +7,7 @@ import PokemonList from 'components/pokemon-list'
 
 function App() {
   const [pokemons, setPokemons] = useState(null)
-  const [sort, setSort] = useState(null)
+  const [sort, setSort] = useState('Id')
   const [filterName, setNameFilter] = useState(null)
   const [filterType, setTypeFilter] = useState([])
 
@@ -51,7 +51,20 @@ function App() {
   }
 
   const pokeSort = (a, b) => {
-    return a - b
+    switch (sort) {
+      case 'number':
+        return a < b ? -1 : 1
+      case 'A-Z':
+        return a.name < b.name ? -1 : 1
+      case 'Z-A':
+        return a.name < b.name ? 1 : -1
+      case 'Type A-Z':
+        return a.types[0] < b.types[0] ? -1 : 1
+      case 'Type Z-A':
+        return b.types[0] - a.types[0] ? 1 : -1
+      default:
+        return a - b
+    }
   }
 
   return (
@@ -63,7 +76,7 @@ function App() {
         <Box>
           <Box display="flex" flexDirection="row" justifyContent="space-around">
             <Box>
-              <Sorter sortSelect={sortSelect} />
+              <Sorter sortSelect={sortSelect} sort={sort} />
             </Box>
             <Box maxWidth={'40px'}>
               <TextSearch pokemonList={pokemons} nameFilter={nameFilter} />
@@ -80,13 +93,15 @@ function App() {
               pokemons
                 .filter(pokeFilter)
                 .sort(pokeSort)
-                .map(({ name, number }) => (
-                  <div key={number}>
-                    <p>
-                      {name}: {number}
-                    </p>
-                  </div>
-                ))}
+                .map(({ name, number }) => {
+                  return (
+                    <div key={number}>
+                      <p>
+                        {name}: {number}
+                      </p>
+                    </div>
+                  )
+                })}
           </Box>
         </Box>
       </body>

@@ -10,7 +10,7 @@ export default function TextSearch({ pokemonList, nameFilter }) {
     <Autocomplete
       value={value}
       onChange={(event, newValue) => {
-        nameFilter(newValue)
+        nameFilter(newValue.name)
         setValue(newValue)
       }}
       inputValue={inputValue}
