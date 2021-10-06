@@ -31,26 +31,23 @@ export default function Main() {
     setTypeFilter(type)
   }
 
-  const pokeFilter = (pokemon) => {
-    if (!filterName && filterType.length === 0) {
+  const nameCheck = (pokemon) => {
+    if (!filterName) {
       return pokemon
-    } else if (filterName && filterType.length > 0) {
-      if (
-        pokemon.name.includes(filterName) &&
-        filterType.every((type) => pokemon.types.includes(type))
-      ) {
+    } else {
+      if (pokemon.name.toLowerCase().includes(filterName.toLowerCase())) {
         return pokemon
       }
-    } else if (filterName && filterType.length === 0) {
-      if (pokemon.name.includes(filterName)) {
-        return pokemon
-      }
-    } else if (filterType.length > 0 && !filterName) {
+    }
+  }
+
+  const typeCheck = (pokemon) => {
+    if (filterType.length === 0) {
+      return pokemon
+    } else {
       if (filterType.every((type) => pokemon.types.includes(type))) {
         return pokemon
       }
-    } else {
-      return pokemon
     }
   }
 
@@ -122,7 +119,8 @@ export default function Main() {
         <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
           {pokemons &&
             pokemons
-              .filter(pokeFilter)
+              .filter(nameCheck)
+              .filter(typeCheck)
               .sort(pokeSort)
               .map((pokemon) => (
                 <Box
