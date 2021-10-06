@@ -12,8 +12,8 @@ export default function Favorite() {
 
   const numberFilter = (pokemon) => {
     let savedIdArray = JSON.parse(localStorage['favorite'] || null)
-    const savedIndex = savedIdArray.indexOf(pokemon?.number)
-    return savedIndex === -1 ? null : pokemon
+    const savedIndex = savedIdArray?.indexOf(pokemon?.number)
+    return savedIndex > -1 ? pokemon : null
   }
 
   return (
